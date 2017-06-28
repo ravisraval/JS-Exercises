@@ -50,5 +50,50 @@ let fibonacci = function(n) {
 
 
 let bsearch = function(arr, target) {
-  
+  if (arr.length === 0) {
+    return -1;
+  }
+
+  let mididx = Math.floor(arr.length / 2);
+  console.log(`mididx : ${mididx}, array: ${arr}, target: ${target}`);
+
+  if (arr[mididx] === target ){
+
+    return mididx;
+  } else if (arr[mididx] < target) {
+    return mididx + bsearch(arr.slice(mididx + 1), target) + 1;
+  } else {
+    return bsearch(arr.slice(0, mididx), target);
+  }
+};
+
+let merge = function(left, right) {
+  let mergedArray = [];
+
+  while (left.length > 0 && right.length > 0) {
+    mergedArray.push((left[0] < right[0]) ? left.shift() : right.shift() ) ;
+  }
+  return mergedArray.concat(left, right);
+};
+
+let mergeSort = function(arr) {
+  if (arr.length < 2) {
+    return arr;
+  }
+
+  let mididx = Math.floor(arr.length / 2);
+  // console.log(`mididx: ${mididx}, array : ${arr}`);
+
+  let sortedLeft = mergeSort(arr.slice(0,mididx));
+  let sortedRight = mergeSort(arr.slice(mididx));
+
+  // console.log(`sortedLeft: ${sortedLeft}, sortedRight : ${sortedRight}`);
+
+
+  return merge(sortedLeft, sortedRight);
+};
+
+
+let subsets = function(arr) {
+
 }

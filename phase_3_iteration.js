@@ -22,7 +22,7 @@ String.prototype.substrings = function() {
   let subs = [];
   for (let i = 0; i < this.length; i++) {
     for (let j = i + 1 ; j <= this.length; j++) {
-      subs.push([this.substring(i, j), [i, j]]);
+      subs.push(this.substring(i, j));
     }
   }
   return subs;
