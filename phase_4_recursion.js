@@ -95,5 +95,14 @@ let mergeSort = function(arr) {
 
 
 let subsets = function(arr) {
+  if (arr.length === 0) {
+    return [[]];
+  }
 
-}
+  let first = arr[0];
+  let withoutFirst = subsets(arr.slice(1));
+  console.log(`${withoutFirst}`);
+  let withFirst = withoutFirst.map(el => el.concat([first]));
+
+  return withFirst.concat(withoutFirst);
+};
